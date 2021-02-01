@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute , NavigationExtras, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-category',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+  private route:ActivatedRoute) 
+  {}
 
   ngOnInit(): void {
   }
 
+  ViewProductList(category : any){
+    this.router.navigate(['/productList', category]);
+  }
 }

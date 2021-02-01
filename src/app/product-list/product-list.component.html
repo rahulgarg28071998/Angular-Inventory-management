@@ -1,1 +1,39 @@
-<p>product-list works!</p>
+<p class="div-header">
+    {{category |titlecase }} Products</p>
+<div>
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th scope="col">
+                    #
+                </th>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    Description
+                </th>
+                <th scope="col">
+                    Quantity
+                </th>
+                <th scope="col">
+                    Selling Price
+                </th>
+                <th scope="col">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of lis;" (click)="goToProcduct(e.id)" [routerLink]="['/product', e.id]">
+                <td></td>
+                <td>{{e.title}}</td>
+                <td>{{e.description | slice:0:20 }}</td>
+                <td>{{e.quantity}}</td>
+                <td>{{e.sellingPrice}}</td>
+                <td>{{e.published}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
