@@ -2,15 +2,17 @@
     text-align: center;
     font-size: 24px;
     margin: 15px 0;
+    font-weight: bold;
 }
 
 .row {
     flex-wrap: nowrap;
+    width: 100%;
+    padding: 2% 0;
 }
 
 .row img {
-    width: 100%;
-    height: 200px;
+    /* height: 200px; */
     object-fit: cover;
 }
 
@@ -34,11 +36,16 @@
     text-align: center;
 }
 
-.col-xl:hover .image {
+.col-md:hover .image {
     opacity: 0.3;
+    /* border: 0; */
 }
 
-.col-xl:hover .middle {
+.col-md .image {
+    border: 2px solid;
+}
+
+.col-md:hover .middle {
     opacity: 1;
 }
 
@@ -49,6 +56,10 @@
     padding: 16px 32px;
 }
 
-.col-xl:hover {
+.col-md:hover {
     cursor: pointer;
+}
+
+.main-div {
+    margin: 50px 0 100px 0;
 }

@@ -6,7 +6,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" routerLink=""><img class="logo" src="assets/img/logo.png" alt="logo">freeBoo</a>
+        <a class="navbar-brand" routerLink=""><img class="logo" src="assets/img/logo.png" alt="logo">InveMang</a>
         <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,8 +30,16 @@
         <router-outlet></router-outlet>
     </div>
     <footer class="footer">
-        <div class="container">
-            <span class="text-muted"></span>
+        <div class="footer-container">
+            <div class=" social-icons row">
+                <span class="col-md copyright">Copyright &copy; 2021 All Rights Reserved by Compro</span>
+                <span class="icons">
+                <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+                <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+                <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+                <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                </span>
+            </div>
         </div>
     </footer>
 </body>

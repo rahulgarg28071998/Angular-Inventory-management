@@ -1,0 +1,57 @@
+.product-div {
+    padding-top: 5%;
+}
+
+.product-image {
+    max-width: 450px;
+    height: 200px;
+    border: 2px solid;
+}
+
+.product {
+    padding: 15px;
+}
+
+.product-description {
+    opacity: 0.5;
+}
+
+
+/* .product-table {
+    padding-top: 2%;
+} */
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+.product-div {
+    padding: 2%;
+    padding-bottom: 10%;
+}
+
+.customer-review {
+    border: 2px solid;
+    padding: 0%;
+    /* margin: 0 5%; */
+    max-width: 400px;
+    height: 300px;
+    font-size: 14px;
+    overflow: auto;
+}
+
+.review-header {
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+.customer-review ul li .review {
+    padding: 10px;
+}
+
+.customer-review::-webkit-scrollbar {
+    display: none;
+}
