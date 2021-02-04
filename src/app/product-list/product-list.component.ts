@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +18,9 @@ export class ProductListComponent implements OnInit {
   hidden=true;
   base_url ="https://angular-assignment-inventory.herokuapp.com/api/tutorials";
   href: any;
+  config: any;
+  
+
   constructor(private http : HttpClient , private router: Router, private modalService: NgbModal) { }
   
   ngOnInit(): void {
@@ -24,6 +28,8 @@ export class ProductListComponent implements OnInit {
     this.href = this.router.url;
     let temp = this.href.split('/');
     this.category = temp[temp.length-1];
+
+
     if(this.category=="productList")
       this.category = "sports";
     
@@ -41,7 +47,28 @@ export class ProductListComponent implements OnInit {
       this.hidden = false;
     })
     
+    this.config = {
+      itemsPerPage: 10,
+      currentPage: 1,
+      totalItems: this.lis.count
+    };
   }
+
+
+  onSubmit(value: any) {
+    console.log("Form Value : ",value);
+
+    this.http.post(this.base_url,{  "title" : value.name,
+                                    "description" : value.description,
+                                    "quantity": value.quantity,
+                                    "sellingPrice": value.price,
+                                    "published":value.publish,
+                                    "category": this.category})
+    .subscribe(Response => {
+      console.log(Response);
+    })
+ }
+
 
   //modal  code
   open(content: any) {

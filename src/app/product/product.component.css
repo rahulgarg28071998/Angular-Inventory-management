@@ -55,3 +55,7 @@ ul {
 .customer-review::-webkit-scrollbar {
     display: none;
 }
+
+.edit-button:hover {
+    color: blue;
+}

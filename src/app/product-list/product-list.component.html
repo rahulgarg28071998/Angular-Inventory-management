@@ -1,12 +1,12 @@
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+        <h4 class="modal-title" id="modal-basic-title">Adding Product Form</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-        <form>
+        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
             <div class="form-group">
                 <!-- <label for="dateOfBirth">Date of birth</label>
                 <div class="input-group">
@@ -15,12 +15,46 @@
                         <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
                     </div>
                 </div> -->
+                <div>
+                    <label for="name">
+                      Name of Product
+                    </label>
+                    <input class="form-control" id="name" type="text" name="name" placeholder="Enter product name" ngModel>
+                </div>
+
+                <div>
+                    <label for="name">
+                      Product Quantity available
+                    </label>
+                    <input class="form-control" id="name" type="text" name="quantity" placeholder="Enter product quantity .eg; 1,12,430" ngModel>
+                </div>
+                <div>
+                    <label for="name">
+                      Product selling price
+                    </label>
+                    <input class="form-control" id="name" type="text" placeholder="Enter product selling price in &#8377;" name="price" ngModel>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea class="form-control" id="task-description" rows="3" style="resize: vertical;" name="description" ngModel></textarea>
+                </div>
             </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" name="publish" ngModel>
+                    <label class="form-check-label" for="gridCheck">
+                    Publish Product
+                  </label>
+                </div>
+            </div>
+            <button class="btn btn-success" type="submit">Update Product</button>
+
         </form>
     </div>
-    <div class="modal-footer">
+    <!-- <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-    </div>
+    </div> -->
 </ng-template>
 
 
@@ -31,7 +65,7 @@
 
 <div>
     <table class="table table-striped">
-
+        <!-- <caption>Product list</caption> -->
         <thead>
             <tr>
                 <th scope="col">
@@ -61,18 +95,26 @@
             </div>
         </div>
         <tbody>
-            <tr class="table-row" *ngFor="let e of lis;" [routerLink]="['/product', e.id]">
+            <tr class="table-row" *ngFor="let e of lis | paginate: config" [routerLink]="['/product', e.id]">
                 <td></td>
                 <td>{{e.title}}</td>
                 <td>{{e.description | slice:0:20 }}</td>
                 <td>{{e.quantity}}</td>
                 <td>{{e.sellingPrice}}</td>
-                <td>{{e.published}}</td>
+                <td>
+                    <!-- {{e.published}} -->
+                    <ng-container *ngIf="!e.published">
+                        &#10060;
+                    </ng-container>
+                    <ng-container *ngIf="e.published">
+                        &#9989;
+                    </ng-container>
+                </td>
             </tr>
         </tbody>
     </table>
-
+    <pagination-controls></pagination-controls>
     <div>
-        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Item</button>
+        <button class="btn btn-lg  btn-outline-success" (click)="open(content)">Add Item</button>
     </div>
 </div>

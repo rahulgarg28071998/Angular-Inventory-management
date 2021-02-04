@@ -4,7 +4,15 @@
         <img class="product-image col-md" src="assets/img/ps5_1.png" alt="product image" />
 
         <div class="col-md product">
-            <h1><strong>{{product_details.title}}</strong></h1>
+            <div class="row">
+                <div class="col-md">
+                    <h1><strong>{{product_details.title}}</strong></h1>
+                </div>
+                <div class="col-md text-right">
+                    <a class="edit-button" (click)="open(content)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                    <!-- <a class="edit-button" (click)="open(content)"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a> -->
+                </div>
+            </div>
             <div class="row">
                 <p class="col-md">Stock <strong> {{product_details.quantity}}</strong></p>
                 <p class="col-md">Selling Price <strong><span>&#8377;</span>{{product_details.sellingPrice}}</strong></p>
@@ -133,3 +141,57 @@
         </div>
     </div>
 </div>
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Adding Product Form</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form #userForm="ngForm" (ngSubmit)="onSubmit1(userForm.value)">
+            <div class="form-group">
+                <div>
+                    <label for="name">
+                      Name of Product
+                    </label>
+                    <input class="form-control" id="name" type="text" name="name" placeholder="Enter product name" [(ngModel)]="product_details.title">
+                </div>
+
+                <div>
+                    <label for="name">
+                      Product Quantity available
+                    </label>
+                    <input class="form-control" id="name" type="text" name="quantity" placeholder="Enter product quantity .eg; 1,12,430" [(ngModel)]="product_details.quantity">
+                </div>
+                <div>
+                    <label for="name">
+                      Product selling price
+                    </label>
+                    <input class="form-control" id="name" type="text" placeholder="Enter product selling price in &#8377;" name="price" [(ngModel)]="product_details.sellingPrice">
+                </div>
+
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea class="form-control" id="task-description" rows="3" style="resize: vertical;" name="description" [(ngModel)]="product_details.description"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" name="publish" [(ngModel)]="product_details.published">
+                    <label class="form-check-label" for="gridCheck">
+                    Publish Product
+                  </label>
+                </div>
+            </div>
+            <button class="btn btn-success" type="submit">Update Product</button>
+
+        </form>
+    </div>
+    <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div> -->
+</ng-template>
